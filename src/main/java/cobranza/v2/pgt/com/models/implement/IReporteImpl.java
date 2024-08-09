@@ -444,8 +444,6 @@ public class IReporteImpl implements
         rv.setDescuento(obj.getDescuento( ));
         rv.setTotal(obj.getTotal( ));
         // Map<String, Object> callback = this.aux.getRequestShopify(
-        // "https://812299d955cbcaa41fefd3b7fa803c0e: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@dmall-bolivia.myshopify.com/admin/api/2022-01/orders.json?status=any&ids="
-        // + obj.getDoc( ), "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");
         // Gson gson = new Gson( );
         // Root root = gson.fromJson(callback.get("data")
         // .toString( ), Root.class);
