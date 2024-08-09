@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 4.0.2  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_Landscape" printOrder="Horizontal" pageWidth="1400" pageHeight="750" orientation="Landscape" columnWidth="1360" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="nombre_empresa" class="java.lang.String"/>
+	<parameter name="rango_fechas" class="java.lang.String"/>
+	<parameter name="usuario" class="java.lang.String"/>
+	<parameter name="fecha_hora" class="java.util.Date"/>
+	<parameter name="logo" class="java.lang.String"/>
+	<field name="reference_number" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="reference_number"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="recibo"/>
+	</field>
+	<field name="valor_documento" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="valor_documento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+	</field>
+	<field name="tipo_documento" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="tipo_documento"/>
+	</field>
+	<field name="nombre_completo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nombre_completo"/>
+	</field>
+	<field name="domicilio" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="domicilio"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+	</field>
+	<field name="nacionalidad" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nacionalidad"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+	</field>
+	<field name="correo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="correo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+	</field>
+	<field name="nro_pedido" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nro_pedido"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="recibo"/>
+	</field>
+	<field name="monto_bs" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="monto_bs"/>
+	</field>
+	<field name="monto_usd" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="monto_usd"/>
+	</field>
+	<field name="estado" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="estado"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="recibo"/>
+	</field>
+	<field name="fecha_venta" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="fecha_venta"/>
+	</field>
+	<field name="fecha_vencimiento" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="fecha_vencimiento"/>
+	</field>
+	<field name="fecha_pago" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="fecha_pago"/>
+	</field>
+	<field name="forma_pago" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="forma_pago"/>
+	</field>
+	<field name="comision" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="comision"/>
+	</field>
+	<field name="grupo_empresa" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="grupo_empresa"/>
+	</field>
+	<field name="empresa" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="empresa"/>
+	</field>
+	<field name="idempresa" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="idempresa"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cliente"/>
+	</field>
+	<variable name="suma_bs" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{monto_bs}]]></variableExpression>
+	</variable>
+	<variable name="suma_sus" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{monto_usd}]]></variableExpression>
+	</variable>
+	<variable name="suma_comision" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$V{sub_comision}]]></variableExpression>
+	</variable>
+	<variable name="sub_comision" class="java.math.BigDecimal">
+		<variableExpression><![CDATA[$F{monto_bs}.multiply($F{comision}.divide( new BigDecimal("100" ) ))]]></variableExpression>
+	</variable>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{idempresa}]]></groupExpression>
+		<groupHeader>
+			<band height="60">
+				<staticText>
+					<reportElement mode="Opaque" x="279" y="40" width="96" height="20" forecolor="#000000" backcolor="#EDEDED">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<pen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Fecha Reporte]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="605" y="40" width="67" height="20" forecolor="#000000" backcolor="#EDEDED">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<pen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Nro. Pedido]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="1156" y="40" width="99" height="20" forecolor="#000000" backcolor="#EDEDED">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<pen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Dirección]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="375" y="40" width="61" height="20" forecolor="#000000" backcolor="#EDEDED">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<pen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Comisión %]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="672" y="40" width="113" height="20" forecolor="#000000" backcolor="#EDEDED">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<pen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Fecha Venta]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="785" y="40" width="118" height="20" forecolor="#000000" backcolor="#EDEDED">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<pen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Fecha Pago]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="903" y="40" width="65" height="20" forecolor="#000000" backcolor="#EDEDED">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<pen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Monto Bs]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="184" y="40" width="95" height="20" forecolor="#000000" backcolor="#EDEDED">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<pen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Id. Cliente]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="968" y="40" width="61" height="20" forecolor="#000000" backcolor="#EDEDED">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<pen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Monto $us]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="1040" y="40" width="116" height="20" forecolor="#000000" backcolor="#EDEDED">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<pen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Email]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="435" y="40" width="170" height="20" forecolor="#000000" backcolor="#EDEDED">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<pen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Id. Transacción]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="20" y="40" width="164" height="20" forecolor="#000000" backcolor="#EDEDED">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<pen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Nombre Cliente]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="1255" y="40" width="75" height="20" forecolor="#000000" backcolor="#EDEDED">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<pen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Total Comisión]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="80" y="7" width="100" height="22"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{grupo_empresa}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="10" y="7" width="69" height="13"/>
+					<text><![CDATA[Comercio:]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="47">
+				<staticText>
+					<reportElement x="846" y="9" width="60" height="15">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<text><![CDATA[SUBTOTAL:]]></text>
+				</staticText>
+				<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="false">
+					<reportElement x="906" y="10" width="64" height="12">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4d717c4f-87c5-4d90-bbba-b9792abbe142"/>
+					</reportElement>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$V{suma_bs}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="false">
+					<reportElement x="970" y="10" width="61" height="12">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4d717c4f-87c5-4d90-bbba-b9792abbe142"/>
+					</reportElement>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$V{suma_sus}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="6" y="0" width="1304" height="2">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+				</line>
+				<staticText>
+					<reportElement x="750" y="27" width="80" height="16"/>
+					<text><![CDATA[Por concepto de:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="false">
+					<reportElement x="830" y="31" width="20" height="12">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4d717c4f-87c5-4d90-bbba-b9792abbe142"/>
+					</reportElement>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="850" y="28" width="146" height="15">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<text><![CDATA[Transacciones. La comisión es:]]></text>
+				</staticText>
+				<textField pattern="#,##0.00#;(#,##0.00#)" isBlankWhenNull="false">
+					<reportElement x="996" y="31" width="80" height="12">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4d717c4f-87c5-4d90-bbba-b9792abbe142"/>
+					</reportElement>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$V{suma_comision}.setScale(2, BigDecimal.ROUND_CEILING)]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="89" splitType="Stretch">
+			<rectangle radius="5">
+				<reportElement x="0" y="0" width="1360" height="79">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="633" y="11" width="233" height="21">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE LIQUIDACIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="961" y="12" width="70" height="13">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Usuario:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="961" y="28" width="70" height="13">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fecha/Hora:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="6" y="61" width="262" height="19"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{nombre_empresa}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="633" y="41" width="233" height="14"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{rango_fechas}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="1031" y="12" width="80" height="13">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{usuario}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="1031" y="28" width="81" height="13">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{fecha_hora}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField pattern="MM/dd/yyyy" isBlankWhenNull="true">
+				<reportElement x="1156" y="0" width="99" height="12">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="192d190d-ffe7-49c2-b3ac-010fdf4a1498"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{domicilio}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="279" y="0" width="96" height="12">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b62e97dc-a674-4822-bd87-8b5bd81f78fb"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fecha_venta}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="375" y="0" width="61" height="12">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="980cdaf9-b4e2-4f61-a1ec-bbff032242d6"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{comision}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MM/dd/yyyy">
+				<reportElement x="605" y="0" width="67" height="12"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nro_pedido}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MM/dd/yyyy HH:mm:ss" isBlankWhenNull="false">
+				<reportElement x="672" y="0" width="113" height="12">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="df9e6b9e-f5d1-4ac2-af63-3b507dbe0687"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fecha_venta}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MM/dd/yyyy HH:mm:ss" isBlankWhenNull="false">
+				<reportElement x="785" y="0" width="118" height="12">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="df9e6b9e-f5d1-4ac2-af63-3b507dbe0687"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fecha_pago}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00##;(#,##0.00##-)" isBlankWhenNull="false">
+				<reportElement x="903" y="0" width="65" height="12">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4d717c4f-87c5-4d90-bbba-b9792abbe142"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{monto_bs}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)" isBlankWhenNull="false">
+				<reportElement x="968" y="0" width="61" height="12">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4d717c4f-87c5-4d90-bbba-b9792abbe142"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{monto_usd}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="184" y="0" width="95" height="12">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4d717c4f-87c5-4d90-bbba-b9792abbe142"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{valor_documento}+" "+ $F{tipo_documento}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="1040" y="0" width="116" height="12">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d1e6f96a-4fd7-418a-be1d-720e85cd5679"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{correo}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="20" y="0" width="164" height="12">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d1e6f96a-4fd7-418a-be1d-720e85cd5679"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nombre_completo}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="435" y="0" width="170" height="12">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4d717c4f-87c5-4d90-bbba-b9792abbe142"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{reference_number}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#)" isBlankWhenNull="false">
+				<reportElement x="1255" y="0" width="75" height="12">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4d717c4f-87c5-4d90-bbba-b9792abbe142"/>
+				</reportElement>
+				<textElement textAlignment="Right" markup="rtf">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{sub_comision}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="258" y="10" width="375" height="15" backcolor="#EDEDED">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Total:  "]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)">
+				<reportElement x="633" y="10" width="66" height="14"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{suma_bs}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)">
+				<reportElement x="699" y="10" width="68" height="14"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{suma_sus}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<bindings xmlns="http://java.sun.com/xml/ns/jaxb" if-exists="true" version="2.1">
+      
+    <!--
+
+Este archivo ha sido generado por la arquitectura JavaTM para la implantación de la referencia de enlace (JAXB) XML v2.3.0 
+Visite <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
+Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
+Generado el: 2020.10.09 a las 09:22:29 AM BOT 
+
+  -->
+      
+    <bindings xmlns:tns="http://sin.ws.pgt360.com/" if-exists="true" scd="x-schema::tns">
+            
+        <schemaBindings map="false">
+                  
+            <package name="cobranza.v2.pgt.com.utils.WS"/>
+                
+        </schemaBindings>
+            
+        <bindings if-exists="true" scd="~tns:dato">
+                  
+            <class ref="cobranza.v2.pgt.com.utils.WS.Dato"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:dataRequest">
+                  
+            <class ref="cobranza.v2.pgt.com.utils.WS.DataRequest"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:request">
+                  
+            <class ref="cobranza.v2.pgt.com.utils.WS.Request"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:outputData">
+                  
+            <class ref="cobranza.v2.pgt.com.utils.WS.OutputData"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:ExceptionPGT">
+                  
+            <class ref="cobranza.v2.pgt.com.utils.WS.ExceptionPGT"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:codigosRespuesta">
+                  
+            <class ref="cobranza.v2.pgt.com.utils.WS.CodigosRespuesta"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:contentData">
+                  
+            <class ref="cobranza.v2.pgt.com.utils.WS.ContentData"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:execute">
+                  
+            <class ref="cobranza.v2.pgt.com.utils.WS.Execute"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:executeResponse">
+                  
+            <class ref="cobranza.v2.pgt.com.utils.WS.ExecuteResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:response">
+                  
+            <class ref="cobranza.v2.pgt.com.utils.WS.Response"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:scheme">
+                  
+            <class ref="cobranza.v2.pgt.com.utils.WS.Scheme"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:items">
+                  
+            <class ref="cobranza.v2.pgt.com.utils.WS.Items"/>
+                
+        </bindings>
+          
+    </bindings>
+    
+</bindings>
